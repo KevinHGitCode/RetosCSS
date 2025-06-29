@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Reto 9 CSS</title>
+  <style>
+    /* Aquí tu CSS */
+
+    body {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 8px;
+    }
+
+    .modal {
+      border: 1px solid red;
+      opacity: 0;
+      pointer-events: none;
+      position: fixed;    
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;  
+      /* top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0; */
+      inset: 0; /* equivale a top:0; right:0; bottom:0; left:0 */
+      background-color: transparent;
+      transition: background-color 0.3s 0.3s, opacity 0.3s 0.3s;
+    }
+
+    .modal.visible {
+      background-color: rgba(55, 55, 55, .5);
+      opacity: 1;
+      pointer-events: auto;
+      transition: background-color 0.3s, opacity 0.3s;
+    }
+
+    .ventana {
+      border: 1px solid blue;
+      background-color: #fff;
+      border-radius: 8px;
+      padding: 8px 8px 16px 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-width: 200px;
+      opacity: 0;
+      transform: translateY(-100%);
+      animation: desaparecer 0.3s;
+    }
+
+    .modal.visible .ventana {
+      animation: aparecer 0.3s 0.2s forwards;
+    }
+
+    @keyframes aparecer {
+      to {
+        opacity: 1;
+        transform: translateY(0%);
+      }
+    }
+
+    @keyframes desaparecer {
+      from {
+        opacity: 1;
+        transform: translateY(0%);
+      }
+      to {
+        opacity: 0;
+        transform: translateY(-100%);
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+<button id="btn-abrir">Abrir Modal</button>
+
+<div class="modal" id="modal">
+  <div class="ventana">
+    <p>📢 Esto es un modal</p>
+    <button id="btn-cerrar">Cerrar</button>
+  </div>
+</div>
+
+<script>
+  const btnAbrir = document.getElementById('btn-abrir');
+  const btnCerrar = document.getElementById('btn-cerrar');
+  const modal = document.getElementById('modal');
+
+  btnAbrir.addEventListener('click', () => {
+    modal.classList.add('visible');
+  });
+
+  btnCerrar.addEventListener('click', () => {
+    setTimeout(() => {
+      modal.classList.remove('visible');
+    }, 200);
+  });
+</script>
+
+</body>
+</html>

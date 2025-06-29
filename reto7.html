@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Reto 7 CSS</title>
+  <style>
+    /* Aquí escribirás tu CSS */
+
+    .contenedor-notificaciones {
+        border: 1px solid;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        position: fixed;
+        bottom: 20%;
+        right: 5%;
+        z-index: 999;
+    }
+
+    .notificacion {
+        background-color: gainsboro;
+        border-left: 5px solid blue;
+        border-radius: 2px;
+        padding: 5px;
+        animation: mostrar 0.5s;
+    }
+
+    .ocultar {
+        animation: ocultar 0.5s;
+    }
+
+    @keyframes mostrar {
+        from {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+    @keyframes ocultar {
+        to {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+    }
+    
+  </style>
+</head>
+<body>
+
+<button id="btn-notificar">Mostrar notificación</button>
+
+<div class="contenedor-notificaciones" id="notificaciones"></div>
+
+<script>
+  const btn = document.getElementById('btn-notificar');
+  const contenedor = document.getElementById('notificaciones');
+
+  btn.addEventListener('click', () => {
+    const toast = document.createElement('div');
+    toast.className = 'notificacion';
+    toast.innerHTML = '📢 Notificación generada';
+
+    contenedor.appendChild(toast);
+
+    // Desaparecer después de 4 segundos
+    setTimeout(() => {
+      toast.classList.add('ocultar');
+      setTimeout(() => toast.remove(), 500);
+    }, 4000);
+
+    // Desaparecer al hacer click
+    toast.addEventListener('click', () => {
+      toast.classList.add('ocultar');
+      setTimeout(() => toast.remove(), 500);
+    });
+  });
+</script>
+
+</body>
+</html>

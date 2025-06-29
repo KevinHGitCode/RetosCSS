@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Reto 8 CSS</title>
+  <style>
+    /* Aquí escribes tu CSS */
+
+    body {
+        box-sizing: border-box;
+        height: 100vh;
+        margin: 0;
+        padding: 8px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .tabs {
+        border-bottom: 1px solid rgba(128, 128, 128, 0.445);
+        display: flex;
+        height: 1.8rem;
+    }
+
+    .tab {
+        background-color: transparent;
+        border: none;
+        border-radius: 3px 3px 0 0;
+        padding: 0 10px;
+    
+    }
+
+    .tab:not(.activa) {
+        color: rgb(65, 65, 65);
+    }
+
+    .tab:not(.activa):hover {
+        background-color: rgba(65, 105, 225, 0.25);
+    }
+
+    .activa {
+        background-color: rgba(65, 105, 225, 0.5);
+        border-bottom: 2px solid rgba(65, 105, 225, 0.75);
+        transition: all 0.1s linear;
+    }
+
+    .contenidos {
+        border: 1px solid;
+        flex-grow: 1;
+    }
+
+    .contenido {
+        display: none;
+        margin: 6px;
+    }
+
+    .contenido.visible {
+        display: block;
+        animation: visible 0.4s;
+    }
+
+    @keyframes visible {
+        from {
+            transform: translateY(25px);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0px);
+            opacity: 1;
+        }
+    }
+  </style>
+</head>
+<body>
+
+<div class="tabs">
+  <button class="tab activa" data-tab="1">Pestaña 1</button>
+  <button class="tab" data-tab="2">Pestaña 2</button>
+  <button class="tab" data-tab="3">Pestaña 3</button>
+</div>
+
+<div class="contenidos">
+  <div class="contenido visible" id="tab-1">📄 Contenido de Pestaña 1</div>
+  <div class="contenido" id="tab-2">📄 Contenido de Pestaña 2</div>
+  <div class="contenido" id="tab-3">📄 Contenido de Pestaña 3</div>
+</div>
+
+<script>
+  const botones = document.querySelectorAll('.tab');
+  const contenidos = document.querySelectorAll('.contenido');
+
+  botones.forEach(boton => {
+    boton.addEventListener('click', () => {
+      // quitar activa a todas
+      botones.forEach(b => b.classList.remove('activa'));
+      // ocultar todos los contenidos
+      contenidos.forEach(c => c.classList.remove('visible'));
+
+      // activar el clickeado
+      boton.classList.add('activa');
+      const tabId = boton.getAttribute('data-tab');
+      document.getElementById('tab-' + tabId).classList.add('visible');
+    });
+  });
+</script>
+
+</body>
+</html>

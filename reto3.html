@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Reto 3 CSS</title>
+  <style>
+
+    .grid-contenedor {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        height: 100vh;
+        width: 100vw;
+    }
+
+    .item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100px;
+        width: 100px;
+        background-color: gray;
+        border: 2px solid black;
+        transition: background-color 0.3s;
+    }
+
+    .item:hover {
+        background-color: aqua;
+    }
+
+    .especial {
+        position: relative;
+        animation: latido 1s infinite;
+    }
+
+    .especial::after {
+        content: "";
+        background-color: red;
+        height: 10px;
+        width: 10px;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        border-radius: 50%;
+    }
+
+    @keyframes latido {
+        50% {
+          transform: scale(1.2);
+        }
+        100% {
+          transform: scale(1);
+        }
+    }
+
+  </style>
+</head>
+<body>
+  <div class="grid-contenedor">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item especial">3</div>
+    <div class="item">4</div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Reto 6 CSS</title>
+  <style>
+    /* Aquí vendrá tu CSS */
+    body {
+        margin: 0;
+        height: 100vh;
+    }
+
+    .contenedor {
+        display: flex;
+        height: 100%;
+    }
+
+    #btn-toggle {
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        transition: transform 0.5s ease;
+    }
+
+    .menu-lateral {
+        border: 2px solid blue;
+        width: 200px;
+        transition: width 0.5s ease;
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        li {
+            display: flex;
+            padding: 5px 10px;
+            border-radius: 5px;
+            border: 1px solid;
+        }
+
+        li:hover {
+            background-color: bisque;
+        }
+
+        span {
+            display: inline-block;
+            opacity: 1;
+            width: auto;
+            margin-left: 8px;
+            white-space: nowrap;
+            overflow: hidden;
+            transition: opacity 0.4s ease, width 0.4s ease;
+        }
+    }
+
+    .menu-lateral.contraido { 
+        width: 60px;
+
+        #btn-toggle {
+            transform: rotate(180deg);
+        }
+
+        li {
+            padding: 5px auto;
+        }
+
+        span {
+            opacity: 0;
+            width: 0;
+            margin-left: 0;
+            transition: opacity 0.4s ease, width 4s ease;
+        }
+    }
+
+    .contenido-principal {
+        border: 2px solid red;
+        flex-grow: 1;
+        padding: 15px;
+    }
+
+
+  </style>
+</head>
+<body>
+
+<div class="contenedor">
+  <nav class="menu-lateral contraido">
+    <button id="btn-toggle">☰</button>
+    <ul>
+      <li>🏠 <span>Inicio</span></li>
+      <li>📄 <span>Documentos</span></li>
+      <li>📧 <span>Mensajes</span></li>
+      <li>⚙️ <span>Configuración</span></li>
+    </ul>
+  </nav>
+
+  <main class="contenido-principal">
+    <h1>Contenido principal</h1>
+    <p>Aquí va todo el contenido de la página.</p>
+  </main>
+</div>
+
+<script>
+  const btn = document.getElementById('btn-toggle');
+  const menu = document.querySelector('.menu-lateral');
+
+  btn.addEventListener('click', () => {
+    menu.classList.toggle('contraido');
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retos de CSS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            background-color: #f5f5f5;
+            color: #333;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+        }
+
+        .challenges-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .challenge-card {
+            background-color: #fff;
+            border: 1px solid #e1e1e1;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .challenge-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .challenge-card a {
+            text-decoration: none;
+            color: #3498db;
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+
+        .challenge-card a:hover {
+            color: #2980b9;
+        }
+
+        .challenge-card p {
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Retos de CSS</h1>
+        <div class="challenges-grid">
+            <div class="challenge-card">
+                <a href="reto1.html">Reto 1</a>
+                <p>Selectores, color y box model básico.</p>
+            </div>
+            <div class="challenge-card">
+                <a href="reto2.html">Reto 2</a>
+                <p>Posicionamiento, pseudo-clases y animaciones básicas.</p>
+            </div>
+            <div class="challenge-card">
+                <a href="reto3.html">Reto 3</a>
+                <p>Grid Layout + Animación con Keyframes.</p>
+            </div>
+            <div class="challenge-card">
+                <a href="reto4.html">Reto 4</a>
+                <p>Aplica un gradiente de fondo a una sección.</p>
+            </div>
+            <div class="challenge-card">
+                <a href="reto5.html">Reto 5</a>
+                <p>Tarjetas Flex decoradas y animadas.</p>
+            </div>
+            <div class="challenge-card">
+                <a href="reto6.html">Reto 6</a>
+                <p>Layout Flex con Menú Colapsable.</p>
+            </div>
+            <div class="challenge-card">
+                <a href="reto7.html">Reto 7</a>
+                <p>Animación de notificaciones emergentes laterales (toasts).</p>
+            </div>
+            <div class="challenge-card">
+                <a href="reto8.html">Reto 8</a>
+                <p>Panel de pestañas (tabs) animado solo con CSS + JS.</p>
+            </div>
+            <div class="challenge-card">
+                <a href="reto9.html">Reto 9</a>
+                <p>Modal (ventana emergente) con animación de entrada y salida.</p>
+            </div>
+            <div class="challenge-card">
+                <a href="reto10.html">Reto 10</a>
+                <p>Sistema de Tarjetas Responsivas Animadas.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

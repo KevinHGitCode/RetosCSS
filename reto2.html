@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Reto 2 CSS</title>
+  <style>
+    /* escribe aquí tu CSS */
+    .contenedor {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #ddd;
+        padding: 20px;
+    }
+
+    .caja {
+        display: flex;
+        height: 100px;
+        width: 100px;
+        background-color: blue;
+        justify-content: center;
+        align-items: center;
+        border: 2px solid black;
+        transition: background-color 0.3s;
+    }
+
+    .caja:hover {
+        background-color: orange;
+    }
+
+    .especial {
+        position: relative;
+    }
+
+    .especial::after {
+        content: "";
+        position: absolute;
+        background-color: red;
+        height: 20px;
+        width: 20px;
+        border-radius: 50%;
+        top: 0;
+        right: 0;
+    }
+
+    button {
+        border-radius: 8px;
+    }
+
+    button:hover {
+        background-color: green;
+        color: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="contenedor">
+    <div class="caja">Caja 1</div>
+    <div class="caja">Caja 2</div>
+    <div class="caja especial">Caja 3</div>
+  </div>
+  <button>Haz click</button>
+</body>
+</html>

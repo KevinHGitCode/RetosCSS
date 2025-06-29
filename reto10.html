@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Reto 10 CSS</title>
+  <style>
+    /* Aquí tu CSS */
+    .cards-container {
+      border: 1px solid red;
+      display: flex;
+      /* flex-wrap: wrap; */
+      justify-content: flex-start;
+      overflow-x: auto;
+    }
+
+    .card-wrapper {
+      border: 1px dotted;
+      display: flex;
+      margin: auto;
+      padding: 5px;
+      gap: 5px;
+    }
+
+    .card {
+      border: 1px solid blue;
+      box-sizing: border-box;
+      /* flex-shrink: 0; */
+      /* flex-grow: 1; */
+      min-width: 200px;
+      height: max-content;
+
+      padding: 3px;
+      margin: 5px;
+      border-radius: 5px;
+      background-color: azure;
+      box-shadow: 5px 5px 1px #000;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+
+      h3 {
+        text-align: center;
+      }
+
+      .card-info {
+        text-align: center;
+        height: 0;
+        overflow-y: hidden;
+        opacity: 0;
+        transition: height .4s, opacity .3s;
+      }
+    }
+
+    .card.active {
+      transform: scale(1.02);
+    }
+
+    .card.active .card-info {
+      height: auto;
+      opacity: 1;
+    }
+
+    .card.inactive {
+      opacity: 0.5;
+      transform: scale(0.99);
+    }
+
+    @media screen and (max-width: 600px) {
+      .card-wrapper {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="cards-container">
+  <div class="card-wrapper">
+    <div class="card">
+      <h3>Título 1</h3>
+      <p class="card-info">Contenido adicional de la tarjeta 1.<br>lorem20</p>
+    </div>
+    <div class="card">
+      <h3>Título 2</h3>
+      <p class="card-info">Contenido adicional de la tarjeta 2.<br>lorem20</p>
+    </div>
+    <div class="card">
+      <h3>Título 3</h3>
+      <p class="card-info">Contenido adicional de la tarjeta 3.<br>lorem20</p>
+    </div>
+    <div class="card">
+      <h3>Título 4</h3>
+      <p class="card-info">Contenido adicional de la tarjeta 4.<br>lorem20</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  const cards = document.querySelectorAll('.card');
+
+  cards.forEach(card => {
+    card.addEventListener('click', () => {
+      const isActive = card.classList.contains('active');
+
+      cards.forEach(c => c.classList.remove('active', 'inactive'));
+
+      if (!isActive) {
+        card.classList.add('active');
+        cards.forEach(c => {
+          if (c !== card) c.classList.add('inactive');
+        });
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

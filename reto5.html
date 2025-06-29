@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Reto 5 CSS</title>
+    <style>
+        .contenedor {
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+            
+        }
+
+        .tarjeta {
+            border: 2px solid red;
+            position: relative;
+            transition: background-color 0.4s ease,
+                        transform 0.4s ease;
+        }
+
+        .tarjeta::before {
+            content: "";
+            position: absolute;
+            border: 1px solid blue;
+            width: 100%;
+            top: -1px;
+            left: -1px;
+        }
+
+        .tarjeta::after {
+            content: "";
+            position: absolute;
+            background-color: yellowgreen;
+            height: 10px;
+            width: 10px;
+            bottom: 0;
+            right: 0;
+            border-radius: 50%;
+        }
+
+        .tarjeta:hover {
+            background-color: blueviolet;
+            transform: scale(1.05);
+        }
+
+        .especial {
+            animation: pulso-suave 2s ease infinite alternate;
+        }
+
+        @keyframes pulso-suave {
+            to {
+                box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.5);
+                transform: scale(1);
+            }
+            from {
+                box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.5);
+                transform: scale(1.025);
+            }
+        }
+
+        @media screen and (max-width: 600px) {
+            .contenedor {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="contenedor">
+        <div class="tarjeta">
+            <h2>Tarjeta 1</h2>
+            <p>Contenido de ejemplo.</p>
+        </div>
+        <div class="tarjeta especial">
+            <h2>Especial</h2>
+            <p>Esta tarjeta brilla.</p>
+        </div>
+        <div class="tarjeta">
+            <h2>Tarjeta 3</h2>
+            <p>Más contenido.</p>
+        </div>
+        <div class="tarjeta">
+            <h2>Tarjeta 4</h2>
+            <p>Texto adicional..</p>
+        </div>
+    </div>
+
+</body>
+
+</html>
